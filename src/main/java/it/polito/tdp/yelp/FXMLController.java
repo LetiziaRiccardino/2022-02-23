@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.yelp.model.Business;
+import it.polito.tdp.yelp.model.Massimo;
 import it.polito.tdp.yelp.model.Model;
 import it.polito.tdp.yelp.model.Review;
 import javafx.event.ActionEvent;
@@ -49,12 +50,33 @@ public class FXMLController {
     	String citta = this.cmbCitta.getValue();
     	if(citta != null) {
     		//TODO popolare la tendina dei locali per la città selezionata
-    		
+    		cmbLocale.getItems().addAll(model.getBusiness(citta));
     	}
     }
 
     @FXML
     void doCreaGrafo(ActionEvent event) {
+    	
+    	String citta= cmbCitta.getValue();
+    	if(citta==null) {
+    		txtResult.setText("Selezionare citta");
+    		return;
+    	}
+    	Business b= cmbLocale.getValue();
+    	if(b==null) {
+    		txtResult.setText("Selezionare locale");
+    		return;
+    	}
+    	
+    	;
+    	
+    	
+    	
+    	txtResult.appendText(model.creaGrafo(b)+"\n");
+    	List<Massimo> massimo= model.getRecensioneMassima();
+    	for(Massimo m: massimo) {
+    		txtResult.appendText(m.toString()+"\n");
+    	}
     	
     }
 
@@ -75,5 +97,7 @@ public class FXMLController {
     
     public void setModel(Model model) {
     	this.model = model;
+    	
+    	cmbCitta.getItems().addAll(model.getCity());
     }
 }
