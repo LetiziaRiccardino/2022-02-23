@@ -42,6 +42,7 @@ public class Model {
 			}
 		}
 		System.out.println("#archi "+this.grafo.edgeSet().size());
+		
 		return "Grafo creato. Numero vertici: "+this.grafo.vertexSet().size()+". Numero archi: "+this.grafo.edgeSet().size()+"\n";
 		
 	}
@@ -58,6 +59,7 @@ public class Model {
 				}else if(archiUscenti==max) {
 					massimo.add(new Massimo(r,max));
 				}
+		
 		}
 		return massimo;
 		
