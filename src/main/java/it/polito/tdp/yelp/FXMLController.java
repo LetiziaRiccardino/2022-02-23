@@ -56,6 +56,7 @@ public class FXMLController {
 
     @FXML
     void doCreaGrafo(ActionEvent event) {
+    	txtResult.clear();
     	
     	String citta= cmbCitta.getValue();
     	if(citta==null) {
